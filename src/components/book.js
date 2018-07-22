@@ -1,15 +1,21 @@
 import React from 'react'
 
 class Book extends React.Component {
+        handleShelfChange(value){
+        this.props.onShelfChangeCategory(this.props.book,value)
+    }
   render() {
+  
     return (
          <li>
                         <div className="book">
                           <div className="book-top">
                             <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${this.props.book.imageLinks.thumbnail})` }}></div>
                             <div className="book-shelf-changer">
-                              <select value="{this.props.book.shelf}">
-                                <option value="move" disabled>Move to...</option>
+                              <select value="{this.props.book.shelf}"
+                                  onChange={(event) => this.handleShelfChange(event.target.value)}
+                                  >
+                                <option value="move">Move to...</option>
                                 <option value="currentlyReading">Currently Reading</option>
                                 <option value="wantToRead">Want to Read</option>
                                 <option value="read">Read</option>

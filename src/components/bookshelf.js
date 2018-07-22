@@ -2,8 +2,13 @@ import React from 'react'
 import Book from './book.js'
 
 class BookShelf extends React.Component {
+    
+       onShelfChange(book,shelf){
+           this.props.onShelfChange(book,shelf)
+       }
   render() {
-       console.log(this.props);
+    
+     
     return (
        
                     <div>
@@ -16,7 +21,7 @@ class BookShelf extends React.Component {
                             this.props.books.length > 0 && this.props.books.map((item) =>
                             (
                             
-                                <Book key={item.id} book={item}/>
+                                <Book key={item.id} book={item} onShelfChangeCategory={(book,shelf)=>{this.onShelfChange(book,shelf)}}/>
                                
                                    
                             )

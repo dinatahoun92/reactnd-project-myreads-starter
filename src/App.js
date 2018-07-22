@@ -18,6 +18,15 @@ class BooksApp extends React.Component {
       this.setState({ books:books })
     })
   }
+    handleOnShelfChange(book,shelf){
+        BooksAPI.update(book,shelf)
+            .then(()=> {
+                book.shelf= shelf;
+                this.setState(state =>({
+                    books: state.books.filter(item => item.id !== book.id).concat([book])
+                }))
+        })
+    }
   render() {
   console.log(this.state.books)
     return (
@@ -52,20 +61,39 @@ class BooksApp extends React.Component {
                 
                 <BookShelf
                     title="Curently reading"
-                    books={this.state.books.filter(item => item.shelf === 'CurrentlyReading')}
+                    books={
+                        this.state.books.filter(item => item.shelf === 'currentlyReading')
+                    }
+                    onShelfChange= {
+                        (book,shelf) => {this.handleOnShelfChange(book,shelf)}
+                                         }
+                                         
                     />
                 
                     
                 <BookShelf
                     title="Want To Read"
-                    books={this.state.books.filter(item => item.shelf === 'wantToRead')}
+                     books={
+                        this.state.books.filter(item => item.shelf === 'wantToRead')}
+                     onShelfChange= {
+                        (book,shelf) => {this.handleOnShelfChange(book,shelf)}
+                                         }
+                                         
                     />
+            
+               
                 
                     
                 <BookShelf
                     title="Read"
-                    books={this.state.books.filter(item => item.shelf === 'read')}
+                     books={
+                        this.state.books.filter(item => item.shelf === 'read')
+                    }
+                     onShelfChange= {
+                        (book,shelf) => {this.handleOnShelfChange(book,shelf)}
+                                         }
                     />
+                  
                 
                 
             </div>
