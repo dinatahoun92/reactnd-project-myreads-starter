@@ -5,12 +5,18 @@ class Book extends React.Component {
         this.props.onShelfChange(this.props.book,value)
     }
   render() {
-  
+  let thumbnail;
+
+      if(!!this.props.book.imageLinks){
+          thumbnail =`url(${this.props.book.imageLinks.thumbnail})`
+      }else{
+          thumbnail= `url('https://placeholdit.co//i/128x193?&bg=555&fc=fff&text=Book Cover')`
+      }
     return (
          <li>
                         <div className="book">
                           <div className="book-top">
-                            <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${this.props.book.imageLinks.thumbnail})` }}></div>
+                            <div className="book-cover" style={{ width: 128, height: 193, backgroundImage:thumbnail}}></div>
                             <div className="book-shelf-changer">
                               <select value="{this.props.book.shelf}"
                                   onChange={(event) => this.handleShelfChange(event.target.value)}
