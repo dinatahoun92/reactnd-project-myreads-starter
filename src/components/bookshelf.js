@@ -21,7 +21,7 @@ class BookShelf extends React.Component {
                             this.props.books.length > 0 && this.props.books.map((item) =>
                             (
                             
-                                <Book key={item.id} book={item} onShelfChangeCategory={(book,shelf)=>{this.onShelfChange(book,shelf)}}/>
+                                <Book key={item.id} book={item} onShelfChange={(book,shelf)=>{this.onShelfChange(book,shelf)}}/>
                                
                                    
                             )

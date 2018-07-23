@@ -2,7 +2,7 @@ import React from 'react'
 
 class Book extends React.Component {
         handleShelfChange(value){
-        this.props.onShelfChangeCategory(this.props.book,value)
+        this.props.onShelfChange(this.props.book,value)
     }
   render() {
   
