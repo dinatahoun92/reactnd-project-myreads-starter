@@ -14,7 +14,7 @@ class Search extends React.Component {
 fetchBooks(query){
     if(!!query){
         BooksAPI.search(query).then(data =>{
-            if(!!data.error){
+            if((!!data.error) || (data.length == 0)){
                 this.setState({
                     books:[]
                 });
